@@ -20,20 +20,19 @@ class Food {
 
 
   create(obj) {
-    const record={
-      id:uuid(),
-      data:obj,
+    const record = {
+      id: uuid(),
+      data: obj,
     };
     this.foodMemo.push(record);
     return record;
   }
 
 
-  update(id,obj) {
-
-    for(let i=0;i<this.foodMemo.length;i++){
-      if (this.foodMemo.id[i] === id){
-        this.foodMemo.data=obj; 
+  update(id, obj) {
+    for (let i = 0; i < this.foodMemo.length; i++) {
+      if (this.foodMemo.id[i] === id) {
+        this.foodMemo.data = obj;
         return this.foodMemo;
       }
     }
@@ -41,10 +40,10 @@ class Food {
 
 
   delete(id) {
-    return this.foodMemo=this.foodMemo.filter((record)=> record.id !== id);
+    return this.foodMemo = this.foodMemo.filter((record) => record.id !== id);
   }
 
 
 }
 
-module.exports=Food;
+module.exports = Food;
