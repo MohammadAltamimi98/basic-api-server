@@ -1,15 +1,15 @@
 'use strict';
 const express = require('express');
-const validator = require('../middleware/validator');
+const validatorFood = require('../middleware/validatorFood');
 const Food = require('../models/food');
 const router = express.Router();
 const food = new Food();
 
 router.get('/', getFood);
 router.get('/:id', getFood);
-router.post('/', validator, createFood);
-router.put('/:id', validator, updateFood);
-router.delete('/:id', validator, deleteFood);
+router.post('/', validatorFood, createFood);
+router.put('/:id', validatorFood, updateFood);
+router.delete('/:id', validatorFood, deleteFood);
 
 
 function getFood(req, res) {

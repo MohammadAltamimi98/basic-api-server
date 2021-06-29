@@ -1,43 +1,29 @@
 'use strict';
-const server = require('../src/server');
 const supertest = require('supertest');
+const { app } = require('../src/server');
+const mockRequest = supertest(app);
 
-const mockRequest = supertest(server.app);
 
 describe('API server', () => {
 
-  it('404 bad route', async () => {
-    let route = '/foo';
-    const response = await mockRequest.get(route);
-    expect(response.status).toBe(404);
-  });
-  it('404 bad method', async () => {
-    let route = '/';
-    const response = await mockRequest.post(route);
-    expect(response.status).toBe(404);
-  });
-  it('500 No Name in query', async () => {
-    let route = '/api/v1/food';
-    const response = await mockRequest.get(route);
-    expect(response.status).toBe(500);
+  it('right path', async () => {
+    const response = await mockRequest.get('/');
+    expect(response.status).toEqual(200);
   });
 
-  it('200 string in the query', async () => {
-    let route = '/api/v1/food?name=chicken';
-    const response = await mockRequest.get(route);
-    console.log(response.text, response);
-    let parsedData = JSON.parse(response.text);
-    expect(response.status).toBe(200);
-    expect(parsedData).toEqual({
-      name: 'chicken',
-    });
+  it('wrong path', async () => {
+    const response = await mockRequest.get('/bad');
+    expect(response.status).toEqual(404);
   });
 
-  it('root route called', async () => {
-    let route = '/';
-    const response = await mockRequest.get(route);
-    expect(response.status).toBe(200);
-    expect(response.text).toEqual('Hello From mohammad.');
+  it('correct food', async () => {
+    const response = await mockRequest.get('/api/v1/food');
+    expect(response.status).toEqual(200);
+  });
+
+  it('correct clothes', async () => {
+    const response = await mockRequest.get('/api/v1/clothes');
+    expect(response.status).toEqual(200);
   });
 
 });

@@ -1,6 +1,6 @@
 'use strict';
 const express = require('express');
-const validator = require('../middleware/validator');
+const validatorClothes = require('../middleware/validatorClothes');
 const Clothes = require('../models/clothes');
 const router = express.Router();
 const clothes = new Clothes();
@@ -8,9 +8,9 @@ const clothes = new Clothes();
 
 router.get('/', getClothes);
 router.get('/:id', getClothes);
-router.post('/', validator, createClothes);
-router.put('/:id', validator, updateClothes);
-router.delete('/:id', validator, deleteClothes);
+router.post('/', validatorClothes, createClothes);
+router.put('/:id', validatorClothes, updateClothes);
+router.delete('/:id', validatorClothes, deleteClothes);
 
 
 function getClothes(req, res) {
