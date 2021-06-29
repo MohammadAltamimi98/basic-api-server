@@ -7,8 +7,8 @@ const clothes = new Clothes();
 
 
 router.get('/', getClothes);
-router.get('/:id', getClothes);
-router.post('/', validatorClothes, createClothes);
+router.get('/:id', validatorClothes, getClothes);
+router.post('/', createClothes);
 router.put('/:id', validatorClothes, updateClothes);
 router.delete('/:id', validatorClothes, deleteClothes);
 
@@ -28,13 +28,12 @@ function createClothes(req, res) {
 function updateClothes(req, res) {
   const resObject = clothes.update(req.params.id, req.body);
   res.status(200).json(resObject);
-
 }
 
 
 function deleteClothes(req, res) {
   const resObject = clothes.delete(req.params.id);
-  res.status(200).json(resObject);
+  res.send('clothes gone.');
 }
 
 

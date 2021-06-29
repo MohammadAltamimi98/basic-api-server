@@ -25,7 +25,7 @@ class Clothes {
       data: obj,
     };
     this.clothesMemo.push(record);
-    return this.clothesMemo;
+    return record;
   }
 
 

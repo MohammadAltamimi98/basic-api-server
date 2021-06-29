@@ -29,6 +29,8 @@ class Food {
   }
 
 
+  
+
   update(id, obj) {
     for (let i = 0; i < this.foodMemo.length; i++) {
       if (this.foodMemo[i].id === id) {

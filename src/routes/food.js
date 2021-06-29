@@ -18,17 +18,17 @@ function getFood(req, res) {
 }
 
 function createFood(req, res) {
-  const resObj = food.read(req.params.id, req.body);
+  const resObj = food.create(req.body);
   res.status(200).json(resObj);
 }
 
 function updateFood(req, res) {
-  const resObj = food.read(req.body);
+  const resObj = food.update(req.params.id, req.body);
   res.status(200).json(resObj);
 }
 
 function deleteFood(req, res) {
-  const resObj = food.read(req.params.id);
+  const resObj = food.delete(req.params.id);
   res.status(200).json(resObj);
 }
 
