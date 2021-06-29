@@ -25,22 +25,23 @@ class Food {
       data: obj,
     };
     this.foodMemo.push(record);
-    return record;
+    return this.foodMemo;
   }
 
 
   update(id, obj) {
     for (let i = 0; i < this.foodMemo.length; i++) {
-      if (this.foodMemo.id[i] === id) {
-        this.foodMemo.data = obj;
-        return this.foodMemo;
+      if (this.foodMemo[i].id === id) {
+        this.foodMemo[i].data = obj;
+        return this.foodMemo[i];
       }
     }
   }
 
 
   delete(id) {
-    return this.foodMemo = this.foodMemo.filter((record) => record.id !== id);
+    this.foodMemo = this.foodMemo.filter((record) => record.id !== id);
+    return 'food is deleted';
   }
 
 

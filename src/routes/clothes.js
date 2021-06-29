@@ -14,27 +14,27 @@ router.delete('/:id', validatorClothes, deleteClothes);
 
 
 function getClothes(req, res) {
-  const resObject=clothes.read(req.params.id);
-  res.json(resObject) ;
+  const resObject = clothes.read(req.params.id);
+  res.status(200).json(resObject);
 }
 
 
 function createClothes(req, res) {
-  const resObject=clothes.create(req.body);
-  res.json(resObject) ;
+  const resObject = clothes.create(req.body);
+  res.status(200).json(resObject);
 }
 
 
 function updateClothes(req, res) {
-  const resObject=clothes.update(req.params.id,req.body);
-  res.json(resObject) ;
+  const resObject = clothes.update(req.params.id, req.body);
+  res.status(200).json(resObject);
 
 }
 
 
 function deleteClothes(req, res) {
-  const resObject=clothes.delete(req.params.id);
-  res.json(resObject) ;
+  const resObject = clothes.delete(req.params.id);
+  res.status(200).json(resObject);
 }
 
 

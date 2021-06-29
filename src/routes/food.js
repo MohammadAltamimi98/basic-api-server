@@ -14,22 +14,22 @@ router.delete('/:id', validatorFood, deleteFood);
 
 function getFood(req, res) {
   const resObj = food.read(req.params.id);
-  res.json(resObj);
+  res.status(200).json(resObj);
 }
 
 function createFood(req, res) {
   const resObj = food.read(req.params.id, req.body);
-  res.json(resObj);
+  res.status(200).json(resObj);
 }
 
 function updateFood(req, res) {
   const resObj = food.read(req.body);
-  res.json(resObj);
+  res.status(200).json(resObj);
 }
 
 function deleteFood(req, res) {
   const resObj = food.read(req.params.id);
-  res.json(resObj);
+  res.status(200).json(resObj);
 }
 
 module.exports = router;

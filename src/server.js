@@ -20,7 +20,7 @@ app.use('/api/v1/clothes', clothesRouter);
 
 
 app.get('/', (req, res) => {
-  res.send('We are live.');
+  res.status(200).send('We are live.');
 });
 
 

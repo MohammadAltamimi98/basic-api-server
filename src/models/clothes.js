@@ -25,22 +25,23 @@ class Clothes {
       data: obj,
     };
     this.clothesMemo.push(record);
-    return record;
+    return this.clothesMemo;
   }
 
 
   update(id, obj) {
     for (let i = 0; i < this.clothesMemo.length; i++) {
-      if (this.clothesMemo.id[i] === id) {
-        this.clothesMemo.data = obj;
-        return this.clothesMemo;
+      if (this.clothesMemo[i].id === id) {
+        this.clothesMemo[i].data = obj;
+        return this.clothesMemo[i];
       }
     }
   }
 
 
   delete(id) {
-    return this.clothesMemo = this.clothesMemo.filter((record) => record.id !== id);
+    this.clothesMemo = this.clothesMemo.filter((record) => record.id !== id);
+    return 'object deleted.';
   }
 
 
