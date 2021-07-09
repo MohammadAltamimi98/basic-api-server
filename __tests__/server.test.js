@@ -1,34 +1,3 @@
-// 'use strict';
-// const supertest = require('supertest');
-// const { app } = require('../src/server');
-// const mockRequest = supertest(app);
-
-
-// describe('API server', () => {
-
-//   it('right path', async () => {
-//     const response = await mockRequest.get('/');
-//     expect(response.status).toEqual(200);
-//   });
-
-//   it('wrong path', async () => {
-//     const response = await mockRequest.get('/bad');
-//     expect(response.status).toEqual(404);
-//   });
-
-//   it('correct food', async () => {
-//     const response = await mockRequest.get('/api/v1/food');
-//     expect(response.status).toEqual(200);
-//   });
-
-//   it('correct clothes', async () => {
-//     const response = await mockRequest.get('/api/v1/clothes');
-//     expect(response.status).toEqual(200);
-//   });
-
-// });
-
-
 const { server } = require('../src/server');
 const supertest = require('supertest');
 const mockRequest = supertest(server);
@@ -42,4 +11,20 @@ describe('food test', () => {
     const response = await mockRequest.get(`/api/v1/clothes`);
     expect(response.status).toBe(200);
   });
+
+  it('test /', async () => {
+    const res = await mockRequest.get('/');
+    expect(res.text).toBe('We are live.');
+  });
+
+  it('test /bad', async () => {
+    const res = await mockRequest.get('/bad');
+    expect(res.status).toBe(500);
+  });
+
+  it('test /not found', async () => {
+    const res = await mockRequest.get('/foo');
+    expect(res.status).toBe(404);
+  });
 });
+
